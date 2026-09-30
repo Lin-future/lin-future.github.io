@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SpatialWeave</title>
+<meta name="description" content="SpatialWeave co-evolves the tools, workflows, and skills around a frozen vision-language model for spatial reasoning.">
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/site.css?v=6">
+<link rel="stylesheet" href="assets/evolution.css?v=6">
+<link rel="stylesheet" href="assets/showcase.css?v=8">
+<link rel="stylesheet" href="assets/lean.css?v=2">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="logo" viewBox="0 0 32 32">
+      <path d="M3 10 C 11 3, 21 17, 29 10" fill="none" stroke="#4f8ead" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M3 16 C 11 9, 21 23, 29 16" fill="none" stroke="#7151c6" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M3 22 C 11 15, 21 29, 29 22" fill="none" stroke="#8a641f" stroke-width="2.6" stroke-linecap="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<article class="doc" id="top">
+  <div class="topbar">
+    <a class="brand" href="#top" aria-label="SpatialWeave, back to top"><svg aria-hidden="true"><use href="#logo"/></svg>SpatialWeave<span class="brand-context">Project page</span></a>
+    <nav aria-label="Sections"><a href="#results">Results</a><a href="#evolution" class="nav-secondary">Evolution</a><a href="#runs">Runs</a><a href="#cite" class="nav-secondary">Cite</a></nav>
+  </div>
+
+  <header class="doc-header">
+    <div class="eyebrow"><span class="nw">Spatial reasoning</span> · <span class="nw">Frozen VLM agents</span> · 2026</div>
+    <h1>Spatial<span class="weave">Weave</span></h1>
+    <p class="subtitle">Co-Evolving Tools, Workflows, and Skills for Spatial Reasoning</p>
+    <p class="lede">The model stays frozen. Its external harness evolves: tools that see, workflows that compute, and skills that say how to read the results. Evolved once with <span class="nw">GPT-5.6 Sol</span>, the same harness lifts every backbone we tried on seven spatial&nbsp;benchmarks.</p>
+    <div class="links">
+      <span class="btn" aria-disabled="true">Paper <small>soon</small></span>
+      <span class="btn" aria-disabled="true">arXiv <small>soon</small></span>
+      <span class="btn" aria-disabled="true">Code <small>soon</small></span>
+      <a class="btn primary" href="#runs">Watch a run</a>
+    </div>
+  </header>
+
+  <figure class="loom" aria-labelledby="loom-cap">
+    <canvas id="loom" height="170" role="img" aria-label="Three threads, tools, workflows, and skills, join one by one from v0 to v6 and weave into one harness"></canvas>
+    <div class="loom-ticks" id="loom-ticks" aria-hidden="true"></div>
+    <figcaption id="loom-cap"><span class="key tools">Tools</span><span class="key flows">Workflows</span><span class="key skills">Skills</span><span class="loom-note">Each thread joins at the version that added it. At v6 the harness is frozen and the scaffold is&nbsp;dropped.</span></figcaption>
+  </figure>
+
+  <div class="illustration" role="group" aria-label="Interactive benchmark results">
+    <div class="illo-grid">
+      <div class="instrument">
+        <div class="inst-label"><span>Gain vs. base</span><span>21 cells</span></div>
+        <div class="atlas" id="atlas"></div>
+        <div class="atlas-key"><span>+0</span><i aria-hidden="true"></i><span>+21 pts</span></div>
+      </div>
+      <div class="instrument scene-wrap" id="scene-stage">
+        <div class="inst-label"><span id="scene-bench">BLINK</span><span id="scene-n">556 questions</span></div>
+        <svg id="scene-svg" viewBox="0 0 460 250" role="img" aria-labelledby="scene-title" xmlns="http://www.w3.org/2000/svg">
+          <title id="scene-title">Benchmark illustration</title>
+          <g id="layer-grid"></g><g id="layer-art"></g>
+          <g id="scene-pointer" opacity="0" pointer-events="none"><circle r="15" fill="none" style="stroke: var(--brand)" stroke-width="1"/><circle r="2" class="dot-acc"/></g>
+          <circle id="scene-ripple" r="0" opacity="0" fill="none" style="stroke: var(--brand)" stroke-width="1" pointer-events="none"/>
+        </svg>
+        <ol class="scene-chain" id="scene-chain" aria-label="Recorded tool chain"></ol>
+        <div class="scene-caption" id="scene-caption"></div>
+      </div>
+      <div class="instrument">
+        <div class="inst-label"><span>Accuracy, %</span><span id="dumb-bb">GPT-5.6 Sol</span></div>
+        <svg class="dumbbell" id="dumbbell" viewBox="0 0 280 150" role="img" aria-labelledby="dumb-title" xmlns="http://www.w3.org/2000/svg">
+          <title id="dumb-title">Base model versus SpatialWeave on the selected benchmark</title>
+          <g id="dumb-grid"></g>
+          <line id="dumb-link" x1="0" y1="92" x2="0" y2="92" style="stroke: var(--brand)" stroke-width="2.2" stroke-opacity=".45"/>
+          <circle id="dumb-base" cx="0" cy="92" r="6" style="fill: var(--paper); stroke: var(--muted)" stroke-width="1.6"/>
+          <circle id="dumb-ours" cx="0" cy="92" r="7" class="dot-acc"/>
+          <text id="dumb-base-num" class="num-base" x="0" y="74" text-anchor="middle">0</text>
+          <text id="dumb-ours-num" class="num-ours" x="0" y="74" text-anchor="middle">0</text>
+          <circle cx="8" cy="26" r="4" style="fill: var(--paper); stroke: var(--muted)" stroke-width="1.3"/>
+          <text class="name" x="16" y="30" id="dumb-base-name">base model</text>
+          <circle cx="126" cy="26" r="4.5" class="dot-acc" id="dumb-ours-key"/>
+          <text class="name" x="134" y="30" id="dumb-ours-name">+ SpatialWeave</text>
+        </svg>
+        <div class="delta"><b id="delta-num">+0</b><span id="delta-text">points on this benchmark</span></div>
+      </div>
+    </div>
+    <div class="active-bar">
+      <span class="plate" aria-hidden="true">FIG. 00</span>
+      <span><strong id="active-bench" aria-live="polite">BLINK</strong> · <span id="active-bb">GPT-5.6 Sol</span></span>
+      <button class="cycle" id="cycle" type="button" aria-pressed="false"><svg viewBox="0 0 12 12" aria-hidden="true" id="cycle-icon"><path d="M2 1l9 5-9 5z"/></svg><span id="cycle-text">Play benchmarks</span></button>
+    </div>
+  </div>
+
+  <div class="tldr"><p><strong>Across seven benchmarks and three frozen backbones, all 21 <span class="nw">benchmark–backbone</span> pairs improve, by 10.13 to 12.26 points overall.</strong> <span class="nw">Qwen3.8-27B</span> with the harness reaches 80.73, above <span class="nw">GPT-6 Astra</span> at 80.28, and the harness applied unchanged lifts Astra itself&nbsp;to&nbsp;85.35.</p></div>
+
+  <section id="results">
+    <h2><span class="num">01</span>Accuracy across backbones</h2>
+    <p class="section-lede">4,929 evaluation questions from seven spatial benchmarks. Bars start at zero. Hatched rows are <span class="nw">GPT-6 Astra</span>, shown as a reference.</p>
+    <figure class="panel" id="rank-fig">
+      <div class="chart-head"><b id="rank-title">Overall · 4,929 questions</b><div class="pills" role="group" aria-label="Benchmark" id="rank-pills"></div></div>
+      <div class="rank" id="rank"></div>
+      <div class="legend"><span><i style="background: var(--brand)"></i>SpatialWeave</span><span><i style="background: var(--base)"></i>Base model</span><span><i style="background: color-mix(in srgb, var(--tools) 55%, var(--base))"></i>Other harness or agent</span></div>
+    </figure>
+  </section>
+
+  <section id="evolution">
+    <h2><span class="num">02</span>How the harness evolved</h2>
+    <p class="section-lede">Each version applies one operator to the harness around a frozen <span class="nw">GPT-5.6 Sol</span>. After the first perception tools, more tools barely help: five specialized tools add +0.20, while generic skills add +2.36 and compiling tool chains into three workflows adds +2.37.</p>
+    <div class="ev" id="ev-root"></div>
+  </section>
+
+  <section id="gains">
+    <h2><span class="num">03</span>Where the gains land</h2>
+    <p class="section-lede">Gain over each backbone's base model, in accuracy points. Every cell of the three evaluated backbones is positive.</p>
+    <figure class="panel">
+      <div class="table-scroll"><table class="heat" id="heat"></table></div>
+      <figcaption><span class="nw">GPT-6 Astra</span> is a reference: the same harness, applied unchanged, raises it on five of seven benchmarks and by 5.07 points overall.</figcaption>
+    </figure>
+  </section>
+
+  <section id="runs">
+    <h2><span class="num">04</span>What each part of the harness fixes</h2>
+    <p class="section-lede">Five recorded runs, each decided by a part a plain tool-calling agent does not have: an evolved rule, a guard, a compiled workflow, a route readout. On their own, the same frozen models miss these questions. Diagrams are drawn from the recorded numbers; the runs play on their own.</p>
+    <div class="sc" id="sc-root"></div>
+  </section>
+
+  <section id="leaner">
+    <h2><span class="num">05</span>Leaner once evolution ends</h2>
+    <p class="section-lede">During evolution a procedure scaffold told the solver to compose tools broadly. With the recurring chains compiled into workflows, the scaffold comes off: accuracy holds and every cost falls.</p>
+    <figure class="panel lean">
+      <div id="lean-root"><p class="ln-static">GPT-5.6 Sol, per question: 5.51 tool calls with the scaffold and 2.97 without (−46.0%); 174,597 tokens and 126,451 (−27.6%); accuracy 80.46 and 80.75.</p></div>
+      <figcaption><b><span class="nw">GPT-5.6 Sol</span>, 4,929 questions.</b> The scaffold is the task-level procedure guidance used while the library evolved; both configurations share the same tools, workflows and skills. <span class="nw">Qwen3.8-27B</span> moves the same way: −10.4% tool calls and −20.1% tokens, at 80.93 with the scaffold and 80.73 without.</figcaption>
+    </figure>
+  </section>
+
+  <section id="cite">
+    <h2><span class="num">06</span>Takeaway</h2>
+    <div class="prose">
+      <p>An external harness can carry spatial reasoning for a frozen model. Beyond a core perception toolset, the gains come from compiling recurring computation into workflows and from skills that bind and interpret it, rather than from adding more tools.</p>
+    </div>
+    <div class="bib">
+      <button class="copy" id="copy-bib" type="button">Copy</button>
+      <pre id="bibtex">@article{spatialweave2026,
+  title   = {SpatialWeave: Co-Evolving Tools, Workflows, and Skills for Spatial Reasoning},
+  author  = {Author list to be announced},
+  year    = {2026}
+}</pre>
+    </div>
+  </section>
+
+  <footer>Numbers are from the SpatialWeave paper (micro accuracy on 4,929 evaluation questions). Runs in section 04 are recorded <span class="nw">GPT-5.6 Sol</span> trajectories; their diagrams are drawn from the recorded tool readouts, and the rule cards quote the skill files the runs read.</footer>
+</article>
+
+<script src="assets/runs.js?v=8"></script>
+<script src="assets/site.js?v=7"></script>
+<script src="assets/evolution.js?v=6"></script>
+<script src="assets/dg/walls.js?v=3"></script>
+<script src="assets/dg/motion.js?v=2"></script>
+<script src="assets/dg/split.js?v=2"></script>
+<script src="assets/dg/gauge.js?v=2"></script>
+<script src="assets/dg/route.js?v=3"></script>
+<script src="assets/showcase.js?v=10"></script>
+<script src="assets/lean.js?v=2"></script>
+</body>
+</html>
