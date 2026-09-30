@@ -5,7 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>SpatialWeave</title>
 <meta name="description" content="SpatialWeave co-evolves the tools, workflows, and skills around a frozen vision-language model for spatial reasoning.">
-<link rel="stylesheet" href="assets/fonts.css">
+<link rel="preload" href="assets/fonts/ubuntu-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/ubuntu-500-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/newsreader-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/fonts.css?v=3">
 <link rel="stylesheet" href="assets/site.css?v=6">
 <link rel="stylesheet" href="assets/evolution.css?v=6">
 <link rel="stylesheet" href="assets/showcase.css?v=8">
@@ -150,15 +153,26 @@
   <footer>Numbers are from the SpatialWeave paper (micro accuracy on 4,929 evaluation questions). Runs in section 04 are recorded <span class="nw">GPT-5.6 Sol</span> trajectories; their diagrams are drawn from the recorded tool readouts, and the rule cards quote the skill files the runs read.</footer>
 </article>
 
+<script>
+/* Charts and diagrams measure their labels: they draw once the faces they use are in (at most 3 s). */
+window.SW_FONTS = (function () {
+  try {
+    if (!document.fonts || !document.fonts.load) return Promise.resolve();
+    var faces = ['400 1em Ubuntu', '500 1em Ubuntu', '700 1em Ubuntu', 'italic 400 1em Ubuntu', '400 1em Newsreader', 'italic 400 1em Newsreader', '400 1em "Ubuntu Mono"'];
+    var all = Promise.all(faces.map(function (f) { return document.fonts.load(f).catch(function () {}); }));
+    return Promise.race([all, new Promise(function (r) { setTimeout(r, 3000); })]);
+  } catch (e) { return Promise.resolve(); }
+})();
+</script>
 <script src="assets/runs.js?v=8"></script>
-<script src="assets/site.js?v=7"></script>
-<script src="assets/evolution.js?v=6"></script>
-<script src="assets/dg/walls.js?v=3"></script>
+<script src="assets/site.js?v=8"></script>
+<script src="assets/evolution.js?v=7"></script>
+<script src="assets/dg/walls.js?v=4"></script>
 <script src="assets/dg/motion.js?v=2"></script>
 <script src="assets/dg/split.js?v=2"></script>
 <script src="assets/dg/gauge.js?v=2"></script>
 <script src="assets/dg/route.js?v=3"></script>
-<script src="assets/showcase.js?v=10"></script>
-<script src="assets/lean.js?v=2"></script>
+<script src="assets/showcase.js?v=12"></script>
+<script src="assets/lean.js?v=3"></script>
 </body>
 </html>

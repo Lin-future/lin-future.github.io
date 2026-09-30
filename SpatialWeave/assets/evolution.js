@@ -2,7 +2,7 @@
    Seven evaluated versions around a frozen GPT-5.6 Sol (4,929 questions, overall micro accuracy),
    drawn as a waterfall: each column is the gain of one operator, with the components it added below.
    Everything lives inside #ev-root; classes are prefixed "ev-". Never throws. */
-(() => {
+(window.SW_FONTS || Promise.resolve()).then(() => {
   'use strict';
   const root = document.getElementById('ev-root');
   if (!root || root.getAttribute('data-ev') === 'on') return;
@@ -610,4 +610,4 @@
   }
 
   try { init(); } catch (e) { /* fail quietly: the section lede still carries the message */ }
-})();
+});

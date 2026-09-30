@@ -1,4 +1,4 @@
-(() => {
+(window.SW_FONTS || Promise.resolve()).then(() => {
 const BENCH = [
   { key: 'CV-Bench3D', short: 'CV3D', n: 960 },
   { key: 'BLINK', short: 'BLINK', n: 556 },
@@ -481,4 +481,4 @@ if ('IntersectionObserver' in window) {
   once.forEach((_, n) => io.observe(n));
 }
 
-})();
+});

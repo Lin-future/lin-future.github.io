@@ -1,6 +1,6 @@
 /* 04 · Five recorded runs: an at-a-glance verdict overview that doubles as the case selector,
    and a one-screen player (stage, answer comparison, run chain) that plays on its own. */
-(() => {
+(window.SW_FONTS || Promise.resolve()).then(() => {
   const root = document.getElementById('sc-root');
   const RUNS = window.SW_RUNS || [];
   const SW = window.SW;
@@ -17,6 +17,8 @@
   const nwords = s => plain(s).trim().split(/\s+/).length;
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const still = () => reduced.matches;
+  /* photos shown small (case cards, the photo strip) use the 320 px copies next to them: t_<name> */
+  const thumbOf = f => 't_' + f;
   const cssVar = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
   const ICON = {
     x: '<svg class="sc-ic" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 3l6 6M9 3l-6 6"/></svg>',
@@ -50,7 +52,7 @@
     const b = el('button', 'sc-case');
     b.type = 'button';
     b.setAttribute('aria-pressed', 'false');
-    b.innerHTML = `<img class="sc-thumb" src="${r.dir + r.thumb}" alt="" decoding="async"><span class="sc-cbody"><span class="sc-cbench sc-ck-${r.comp ? r.comp.k : 'tool'}">${r.comp ? compHTML(r.comp) : esc(r.bench)}</span><span class="sc-ctask">${esc(r.task).replace(/ (\S+)$/, '\u00a0$1')}</span></span>` +
+    b.innerHTML = `<img class="sc-thumb" src="${r.dir + thumbOf(r.thumb)}" alt="" decoding="async"><span class="sc-cbody"><span class="sc-cbench sc-ck-${r.comp ? r.comp.k : 'tool'}">${r.comp ? compHTML(r.comp) : esc(r.bench)}</span><span class="sc-ctask">${esc(r.task).replace(/ (\S+)$/, '\u00a0$1')}</span></span>` +
       `<span class="sc-verdict"><span class="sc-vb">${ICON.x}<span>${esc(r.vb)}</span></span><span class="sc-to" aria-hidden="true">→</span><span class="sc-vs">${ICON.v}<span>${esc(r.vs)}</span></span></span>` +
       `<span class="sc-prog" aria-hidden="true"><i></i></span>`;
     b.setAttribute('aria-label', `${r.comp ? r.comp.label + '. ' : ''}${r.bench}. ${r.task} Base model alone: ${r.vb}, wrong. With SpatialWeave: ${r.vs}, correct.`);
@@ -99,9 +101,9 @@
   /* per-step dwell: the decisive step holds longest (its diagram is the point), then the answer; others by caption length */
   function dwell(c, s) {
     const r = RUNS[c], st = r.steps[s];
-    if (st.key) return 5200;                        // the decisive step: time to read its diagram
-    if (s === r.steps.length - 1) return 4400;      // the answer, next to the base model's ghost
-    return clamp(2000 + nwords(st.text) * 70, 2800, 3600);
+    if (st.key) return 3400;                        // the decisive step: its diagram draws, then a beat to read it
+    if (s === r.steps.length - 1) return 3000;      // the answer, next to the base model's ghost
+    return clamp(1500 + nwords(st.text) * 40, 2000, 2600);
   }
 
   /* ---------------- answer comparison ---------------- */
@@ -713,7 +715,7 @@
     photosEl.textContent = '';
     (r.photos || []).forEach(f => {
       const b = el('button', 'sc-photo'); b.type = 'button'; b.dataset.f = f;
-      b.innerHTML = `<img src="${r.dir + f}" alt="" decoding="async" loading="lazy">`;
+      b.innerHTML = `<img src="${r.dir + thumbOf(f)}" alt="" decoding="async" loading="lazy">`;
       b.setAttribute('aria-label', `Show input photo: ${plain(r.media[f] || f)}`);
       b.addEventListener('click', () => { manual(); showMedia(r, { media: f }, true); markPhoto(f); });
       photosEl.appendChild(b);
@@ -952,4 +954,4 @@
   });
   start();
   lockHeights();
-})();
+});

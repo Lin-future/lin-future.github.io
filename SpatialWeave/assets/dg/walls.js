@@ -209,7 +209,7 @@
       var cp = sv('clipPath', { id: id }, tg);
       sv('rect', { x: p[0], y: p[1], width: tw, height: th, rx: 4 }, cp);
       P('rect', { x: p[0], y: p[1], width: tw, height: th, rx: 4 }, tg, 'fill:var(--surface);stroke:none');
-      if (v.img) sv('image', { href: dir + v.img, x: p[0], y: p[1], width: tw, height: th, preserveAspectRatio: 'xMidYMin slice', 'clip-path': 'url(#' + id + ')' }, tg);
+      if (v.img) sv('image', { href: dir + 't_' + v.img, x: p[0], y: p[1], width: tw, height: th, preserveAspectRatio: 'xMidYMin slice', 'clip-path': 'url(#' + id + ')' }, tg);
       var isTruth = answer && v.opt === truthL;
       P('rect', { x: p[0] - 0.5, y: p[1] - 0.5, width: tw + 1, height: th + 1, rx: 4.5 }, tg,
         'fill:none;stroke:' + (isTruth ? 'var(--ok)' : 'var(--rule)') + ';stroke-width:' + (isTruth ? 2 : 1));

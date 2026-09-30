@@ -6,7 +6,7 @@
    Both bars of a metric grow at the same speed, so the shorter one finishes first; the tool-use grids fill one
    question per tick. Plays when the panel comes into view (again after it has left the screen) or on Replay.
    Everything lives inside #lean-root; classes are prefixed "ln-". Never throws. */
-(() => {
+(window.SW_FONTS || Promise.resolve()).then(() => {
   'use strict';
   const root = document.getElementById('lean-root');
   if (!root || root.getAttribute('data-ln') === 'on') return;
@@ -206,4 +206,4 @@
     }), { threshold: [0, 0.34, 0.6] });
     io.observe(root);
   }
-})();
+});
